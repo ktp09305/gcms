@@ -1,0 +1,5 @@
+Gcms::ResourceService.register(:content_management, Gcms::Template, "fa-support")
+Gcms::ResourceService.register(:content_management, Gcms::Page, "fa-sitemap")
+Gcms::ResourceService.register(:content_management, Gcms::Asset, "fa-image")
+Gcms::ResourceService.register(:content_management, Gcms::User, "fa-users")
+Gcms::ResourceService.register(:content_management, Gcms::Snippet, "fa-bookmark")

@@ -1,0 +1,171 @@
+'use strict'
+
+angular.module('GCMS').config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
+
+    $urlRouterProvider.when('/', '/gcms/pages')
+    # For unmatched routes
+    $urlRouterProvider.otherwise('/')
+
+    # Application routes
+    $stateProvider
+        .state('help', {
+            url: '/gcms/help',
+            views:
+              "header":
+                template: "<%= I18n.t(:help) %>"
+              "@":
+                controller: 'HelpController',
+                controllerAs: 'help',
+                templateUrl: 'help.html'
+        })
+        .state('settings', {
+            url: '/gcms/settings',
+            views:
+              "header":
+                template: "<%= I18n.t(:settings) %>"
+              "@":
+                controller: 'SettingsController',
+                controllerAs: 'settings',
+                templateUrl: 'settings.html'
+        })
+        .state('pages', {
+            url: '/gcms/pages',
+            views:
+              "header":
+                template: "<%= Gcms::Page.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'PagesController',
+                controllerAs: 'pages',
+                templateUrl: 'pages/index.html',
+        })
+        .state('pages.new', {
+            url: '/new',
+            views:
+              "header@":
+                template: "<%= I18n.t(:new_page) %>"
+              "@":
+                controller: 'PagesController',
+                controllerAs: 'pages',
+                templateUrl: 'pages/new.html',
+        })
+        .state('pages.edit', {
+            url: '/:id/edit',
+            views:
+              "header@":
+                template: "<%= I18n.t(:edit_page) %>"
+              "@":
+                controller: 'PagesController',
+                controllerAs: 'pages',
+                templateUrl: 'pages/edit.html',
+        })
+        .state('templates', {
+            url: '/gcms/templates',
+            views:
+              "header":
+                template: "<%= Gcms::Template.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'TemplatesController',
+                controllerAs: 'templates',
+                templateUrl: 'templates/index.html'
+        })
+        .state('templates.new', {
+            url: '/new',
+            views:
+              "header@":
+                template: "<%= I18n.t(:new_template) %>"
+              "@":
+                controller: 'TemplatesController',
+                controllerAs: 'templates',
+                templateUrl: 'templates/new.html',
+        })
+        .state('templates.edit', {
+          url: '/:id/edit',
+          views:
+            "header@":
+              template: "<%= I18n.t(:edit_template) %>"
+            "@":
+              controller: 'TemplatesController',
+              controllerAs: 'templates',
+              templateUrl: 'templates/edit.html',
+        })
+        .state('assets', {
+            url: '/gcms/assets',
+            views:
+              "header":
+                template: "<%= Gcms::Asset.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'AssetsController',
+                controllerAs: 'assets',
+                templateUrl: 'assets/index.html'
+        })
+        .state('assets.new', {
+            url: '/new',
+            views:
+              "header@":
+                template: "<%= I18n.t(:new_asset) %>"
+              "@":
+                controller: 'AssetsController',
+                controllerAs: 'assets',
+                templateUrl: 'assets/new.html',
+        })
+        .state('assets.edit', {
+          url: '/:id/edit',
+          views:
+            "header@":
+              template: "<%= I18n.t(:edit_asset) %>"
+            "@":
+              controller: 'AssetsController',
+              controllerAs: 'assets',
+              templateUrl: 'assets/edit.html',
+        })
+        .state('users', {
+            url: '/Gcms/users',
+            views:
+              "header":
+                template: "<%= Gcms::User.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'UsersController',
+                controllerAs: 'users',
+                templateUrl: 'users/index.html'
+        })
+        .state('users.new', {
+            url: '/new',
+            views:
+              "header@":
+                template: "<%= I18n.t(:new_user) %>"
+              "@":
+                controller: 'UsersController',
+                controllerAs: 'users',
+                templateUrl: 'users/new.html',
+        })
+        .state('snippets', {
+            url: '/gcms/snippets',
+            views:
+              "header":
+                template: "<%= Gcms::Snippet.model_name.human(count: 1.1) %>"
+              "@":
+                controller: 'SnippetsController',
+                controllerAs: 'snippets',
+                templateUrl: 'snippets/index.html'
+        })
+        .state('snippets.new', {
+            url: '/new',
+            views:
+              "header@":
+                template: "<%= I18n.t(:new_snippet) %>"
+              "@":
+                controller: 'SnippetsController',
+                controllerAs: 'snippets',
+                templateUrl: 'snippets/new.html',
+        })
+        .state('snippets.edit', {
+          url: '/:id/edit',
+          views:
+            "header@":
+              template: "<%= I18n.t(:edit_snippet) %>"
+            "@":
+              controller: 'SnippetsController',
+              controllerAs: 'snippets',
+              templateUrl: 'snippets/edit.html',
+        })
+]
